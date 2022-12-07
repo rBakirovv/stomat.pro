@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stomat.pro</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script type="text/javascript" charset="utf-8" async="" src="./js/requisitesModal.js"></script>
+  <script type="text/javascript" charset="utf-8" async="" src="./js/callbackModal.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="navigation">
+      <div class="navigation__lines-container">
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+      </div>
+      <div class="navigation__container">
+        <div class="navigation__content-container">
+          <picture class="navigation__logo-picture">
+            <source srcset="./img/logo_nav_mobile.svg" media="(max-width: 1000px)">
+            <img class="navigation__logo" src="./img/logo_nav.svg" alt="stomat.pro">
+          </picture>
+          <div class="navigation__links-container">
+            <a class="navigation__link" href="#delivery">Доставка и оплата</a>
+            <a class="navigation__link" href="#about-us">Контакты</a>
+          </div>
+          <div class="navigation__callback-container">
+            <a class="navigation__phone-number-container" href="#" id="open-callbacl-modal-header" href="#"
+              onclick="openCallbackModal();return false;">
+              <p class="navigation__phone-number">8 (495) 123-45-90</p>
+              <p class="navigation__callback-text">Заказать обратный звонок</p>
+            </a>
+            <a class="navigation__order-button" href="#">Сделать заказ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="medicine">
+      <div class="medicine__container" id="medicine"></div>
+    </section>
+    <section class="delivery" id="delivery">
+      <div class="delivery__container">
+        <div class="delivery__card delivery__card_purple">
+          <div class="delivery__card-icon delivery__card-icon_purple">
+            <img class="delivery__card-icon-image" src="./img/geo-icon.svg" alt="Геолокация">
+          </div>
+          <h2 class="delivery__card-title">Доставка</h2>
+          <p class="delivery__card-subtitle">Подзаголовок</p>
+          <p class="delivery__card-text">
+            Гипертензивный эффект симпатомиметических аминов типа эпинефрина может быть усилен трициклическими
+            антидепрессантами
+            и ингибиторами моноаминооксидазы. <a class="delivery__card-link" href="#">Взаимодействие</a> подобного
+            типа описано <span class="delivery__card-span">для эпинефрина и норадреналина</span> при
+            их использовании
+            в качестве вазоконстрикторов в концентрациях 1:25000 и 1:80000 соответственно
+          </p>
+          <p class="delivery__card-text">
+            Не следует назначать препарат на фоне лечения неселективными бета-адреноблокаторами, поскольку в этом случае
+            высок рискразвития
+            гипертонического криза и выраженной брадикардии. Местноанестезирующее действие артикаина усиливают и
+            удлиняют сосудосуживающие
+            лекарственные средства.
+          </p>
+          <ul class="delivery__card-list">
+            <li class="delivery__card-list-item">По 1,7 мл в картриджи из <span class="delivery__card-span">бесцветного
+                нейтрального стекла</span></li>
+            <li class="delivery__card-list-item"><span class="delivery__card-span">Укупоренный</span> с двух концов
+              пробками из бромбутиловой резины</li>
+            <li class="delivery__card-list-item"><span class="delivery__card-span">По 50 картриджей</span> с инструкцией
+              <a class="delivery__card-link" href="#">по применению</a> в банке жестяной,
+              укупоренной дополнительно полупрозрачной
+              пластмассовой крышкой
+            </li>
+            <li class="delivery__card-list-item">Пробка, закрывающая горлышко картриджа, <span
+                class="delivery__card-span">защищена кольцом</span> из алюминиевой
+              фольги</li>
+          </ul>
+          <p class="delivery__card-text">
+            Не следует назначать препарат на фоне лечения неселективными бета-адреноблокаторами, поскольку в этом случае
+            высок рискразвития
+            гипертонического криза и выраженной брадикардии. Местноанестезирующее действие артикаина усиливают и
+            удлиняют сосудосуживающие
+            лекарственные средства.
+          </p>
+        </div>
+        <div class="delivery__card delivery__card_orange">
+          <div class="delivery__card-icon delivery__card-icon_orange">
+            <img class="delivery__card-icon-image" src="./img/ruble.svg" alt="Геолокация">
+          </div>
+          <h2 class="delivery__card-title">Доставка</h2>
+          <p class="delivery__card-subtitle">Подзаголовок</p>
+          <p class="delivery__card-text">
+            Гипертензивный эффект симпатомиметических аминов типа эпинефрина может быть усилен трициклическими
+            антидепрессантами
+            и ингибиторами моноаминооксидазы. <a class="delivery__card-link" href="#">Взаимодействие</a> подобного
+            типа описано <span class="delivery__card-span">для эпинефрина и норадреналина</span> при
+            их использовании
+            в качестве вазоконстрикторов в концентрациях 1:25000 и 1:80000 соответственно
+          </p>
+          <p class="delivery__card-text">
+            Не следует назначать препарат на фоне лечения неселективными бета-адреноблокаторами, поскольку в этом случае
+            высок рискразвития
+            гипертонического криза и выраженной брадикардии. Местноанестезирующее действие артикаина усиливают и
+            удлиняют сосудосуживающие
+            лекарственные средства.
+          </p>
+          <ul class="delivery__card-list">
+            <li class="delivery__card-list-item">По 1,7 мл в картриджи из <span class="delivery__card-span">бесцветного
+                нейтрального стекла</span></li>
+            <li class="delivery__card-list-item"><span class="delivery__card-span">Укупоренный</span> с двух концов
+              пробками из бромбутиловой резины</li>
+            <li class="delivery__card-list-item"><span class="delivery__card-span">По 50 картриджей</span> с инструкцией
+              <a class="delivery__card-link" href="#">по применению</a> в банке жестяной,
+              укупоренной дополнительно полупрозрачной
+              пластмассовой крышкой
+            </li>
+            <li class="delivery__card-list-item">Пробка, закрывающая горлышко картриджа, <span
+                class="delivery__card-span">защищена кольцом</span> из алюминиевой
+              фольги</li>
+          </ul>
+          <p class="delivery__card-text">
+            Не следует назначать препарат на фоне лечения неселективными бета-адреноблокаторами, поскольку в этом случае
+            высок рискразвития
+            гипертонического криза и выраженной брадикардии. Местноанестезирующее действие артикаина усиливают и
+            удлиняют сосудосуживающие
+            лекарственные средства.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="about-us" id="about-us">
+      <div class="about-us__container">
+        <div class="about-us__text-container">
+          <h2 class="about-us__title">О нас</h2>
+          <p class="about-us__subtitle">Гипертензивный эффект симпатомиметических аминов типа эпинефрина может быть
+            усилен трициклическими антидепрессантами
+            и ингибиторами моноаминооксидазы. Взаимодействие подобного типа описано для эпинефрина и норадреналина при
+            их использовании в качестве вазоконстрикторов в концентрациях 1:25000 и 1:80000 соответственно</p>
+          <img class="about-us__image_mobile" src="./img/about-us.png" alt="Офис">
+          <p class="about-us__subtitle">Не следует назначать препарат на фоне лечения неселективными
+            бета-адреноблокаторами, поскольку в этом случае высок риск развития гипертонического криза и выраженной
+            брадикардии.</p>
+          <a class="about-us__link" class="requisites__close_mobile" id="open-requisites-modal" href="#"
+            onclick="openRequisitesModal();return false;">
+            <svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18.2466 5.38943L14.6106 1.75343C14.1284 1.27129 13.474 1 12.7926 1H3.57143C2.15071 1 1 2.15071 1 3.57143V21.5714C1 22.9921 2.15071 24.1429 3.57143 24.1429H16.4286C17.8493 24.1429 19 22.9921 19 21.5714V7.20743C19 6.526 18.7287 5.87157 18.2466 5.38943V5.38943Z"
+                stroke="#4F43A7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M18.9998 7.42857H13.8569C13.1472 7.42857 12.5712 6.85257 12.5712 6.14286V1M9.99979 11.2857V20.2857M4.85693 15.7857H15.1426M13.8569 20.2857H6.14265C5.43293 20.2857 4.85693 19.7097 4.85693 19V12.5714C4.85693 11.8617 5.43293 11.2857 6.14265 11.2857H13.8569C14.5666 11.2857 15.1426 11.8617 15.1426 12.5714V19C15.1426 19.7097 14.5666 20.2857 13.8569 20.2857Z"
+                stroke="#4F43A7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="about-us__link-span">Реквизиты компании</span>
+          </a>
+        </div>
+        <img class="about-us__image" src="./img/about-us.png" alt="Офис">
+      </div>
+    </section>
+    <section class="map" id="map">
+      <a href="#medicine" class="map__arrow-up">
+        <img src="./img/arrow-up.svg" alt="Вверх">
+        вверх
+      </a>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="navigation navigation_footer">
+      <div class="navigation__lines-container navigation__lines-container_footer">
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+        <div class="navigation__line"></div>
+      </div>
+      <div class="navigation__container navigation__container_footer">
+        <div class="navigation__content-container navigation__content-container_footer">
+          <picture class="navigation__logo-picture">
+            <source srcset="./img/logo_nav_footer_mobile.svg" media="(max-width: 1000px)">
+            <img class="navigation__logo" src="./img/logo_nav.svg" alt="stomat.pro">
+          </picture>
+          <p class="navigation__license">
+            Лицензия ЛО-77-01-014897 от 26 сентября 2017 <br>
+            ИНН: 1117746533145; ОГРН: 7704785911
+          </p>
+          <div class="navigation__callback-container navigation__callback-container_footer">
+            <a class="navigation__phone-number-container" href="#" id="open-callbacl-modal-footer" href="#"
+              onclick="openCallbackModal();return false;">
+              <p class="navigation__phone-number">8 (495) 123-45-90</p>
+              <p class="navigation__callback-text">Заказать обратный звонок</p>
+            </a>
+            <a class="navigation__order-button" href="#">Сделать заказ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <section class="requisites">
+    <div class="requisites__container">
+      <div class="close-button">
+        <img class="close-button__image" src="./img/close-icon.svg" alt="закрыть">
+      </div>
+      <h2 class="requisites__title">Реквизиты</h2>
+      <ul class="requisites__list">
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Полное наименование</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">Общество с ограниченной ответственностью«МЕДСНАБ»</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Сокращенное наименование</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">ООО «МЕДСНАБ»</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">ИНН</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">9723160080</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">КПП</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">772301001</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Код ОКПО</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">код</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Код ОКТМО</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">код</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Код отрасли по ОКВЭД</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">46.46 (Торговля оптовая фармацевтической продукцией)</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Юридический адрес</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">109383, г.Москва, Батюнинский проезд, д.11, стр.6, этаж 2, помещ.6
+          </p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Почтовый адрес</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">109383, г.Москва, Батюнинский проезд, д.11, стр.6, этаж 2, помещ.6
+          </p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">ОГРН</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">1227700401147</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Наименование банка</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">ПАО СБЕРБАНК , г. Москва</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Расчетный счет</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">40702810638000139476</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Корреспондентский счет</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">30101810400000000225</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">БИК</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">044525225</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Контактный телефон</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">телефон</p>
+        </li>
+        <li class="requisites__list-item">
+          <div class="requisites__list-left-side">
+            <h3 class="requisites__list-item-title">Генеральный директор</h3>
+            <div class="requisites__dots"></div>
+          </div>
+          <p class="requisites__list-item-subtitle">Безсмертная Яна Анатольевна</p>
+        </li>
+      </ul>
+      <a class="requisites__close_mobile" id="close-requisites-modal-mobile" href="#"
+        onclick="closeRequisitesModal();return false;">Закрыть окно</a>
+    </div>
+  </section>
+  <section class="callback">
+    <div class="modal__container">
+      <div class="close-button">
+        <img class="close-button__image" src="./img/close-icon.svg" alt="закрыть">
+      </div>
+      <div class="modal__content-container">
+        <h2 class="modal__title">Заказать обратный звонок</h2>
+        <form class="modal__form">
+          <div class="modal__input-container">
+            <label class="modal__input-label">Ваше имя<span class="modal__input-label-span">*</span></label>
+            <input class="modal__input" type="text" name="name" placeholder="Введите данные" required>
+          </div>
+          <div class="modal__input-container">
+            <label class="modal__input-label">Телефон<span class="modal__input-label-span">*</span></label>
+            <input class="modal__input modal__input-phone" type="tel" name="phone" placeholder="+7 495 123-45-90"
+              required>
+            <div class="modal__input-phone-valid-icon">
+              <img src="./img/check-green.svg" alt="Валидно">
+            </div>
+          </div>
+          <button class="modal__submit" type="submit">Заказать обратный звонок</button>
+        </form>
+      </div>
+      <div class="modal__success-container">
+        <img class="modal__success-image" src="./img/callback-success.svg" alt="Успешно">
+        <h2 class="modal__title modal__title_success">Мы свяжемся с вами!</h2>
+        <p class="modal__subtitle">В скором времени <span class="modal__subtitle-span">наш менеджер</span> свяжется с
+          вами</p>
+        <a class="modal__success-close" id="close-callback-success-modal" href="#"
+          onclick="closeCallbackModal();return false;">Закрыть окно</a>
+      </div>
+    </div>
+  </section>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=c9ed032f-0f47-41ae-8390-9122eafcd244&lang=ru_RU"
+    type="text/javascript"></script>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>

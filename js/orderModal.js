@@ -6,6 +6,35 @@ const phoneInputOrderItem = orderModal.querySelector('.modal__input-phone');
 const submitOrderButton = orderModal.querySelector('.modal__submit');
 const inputOrderCheckItem = orderModal.querySelector('.modal__input-phone-valid-icon');
 
+// выбрать кол-во
+
+const chooseMedicineQuantity = document.querySelector('.medicine__button-choose');
+const chooseMedicineQuantityButton = document.querySelector('.medicine__button-number');
+
+// кол-во штук
+const inputNumberElement = document.querySelector('.medicine__number-input');
+
+// + 1
+
+function increment() {
+  inputNumberElement.value = parseInt(inputNumberElement.value) + 1;
+};
+
+// - 1
+
+function decrement() {
+  inputNumberElement.value = inputNumberElement.value - 1;
+
+  if (inputNumberElement.value < 1) {
+    inputNumberElement.value = 1;
+  };
+};
+
+function toggleNumberSelection() {
+  chooseMedicineQuantity.classList.add('medicine__button-choose_hidden');
+  chooseMedicineQuantityButton.classList.add('medicine__button-number_visible');
+}
+
 const openOrderModal = () => {
   orderModal.classList.add('order_active');
   orderModal.addEventListener("click", handleCloseOrderModal);
@@ -124,5 +153,11 @@ for (var phoneInput of phoneInputs) {
   phoneInput.addEventListener('input', onPhoneInput, false);
   phoneInput.addEventListener('paste', onPhonePaste, false);
 }
+
+inputNumberElement.addEventListener("change", (e) => {
+  if (e.target.value < 0) {
+    inputNumberElement.value = 1;
+  };
+});
 
 modalOrderForm.addEventListener("submit", handleOrderSubmit);

@@ -92,7 +92,15 @@
             </p>
           </div>
           <div class="medicine__buttons-container">
-            <a class="medicine__button-choose" href="#">Выбрать количество</a>
+            <a class="medicine__button-choose" id="choose-medicine-quantity" href="#"
+              onclick="toggleNumberSelection();return false;">Выбрать количество</a>
+            <form class="medicine__button-number">
+              <button class="medicine__number-button" id="decrement-medicine-number" href="#"
+                onclick="decrement();return false;">-</button>
+              <input class="medicine__number-input" type="number" value="1" min="1">
+              <button class="medicine__number-button" id="increment-medicine-number" href="#"
+                onclick="increment();return false;">+</button>
+            </form>
             <a class="medicine__button-callback" href="#" id="open-callbacl-modal-banner" href="#"
               onclick="openCallbackModal();return false;">Обратный звонок</a>
           </div>
@@ -403,7 +411,7 @@
         <img class="close-button__image" src="./img/close-icon.svg" alt="закрыть">
       </div>
       <div class="modal__content-container">
-        <h2 class="modal__title">Заказать обратный звонок</h2>
+        <h2 class="modal__title">Заказать обратный <br> звонок</h2>
         <form class="modal__form">
           <div class="modal__input-container">
             <label class="modal__input-label">Ваше имя<span class="modal__input-label-span">*</span></label>

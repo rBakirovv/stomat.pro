@@ -57,4 +57,29 @@ window.addEventListener("DOMContentLoaded", function () {
       item.classList.contains(tabName) ? item.classList.add('options__content-container_active') : item.classList.remove('options__content-container_active');
     })
   }
+
+  const accordionElement = document.querySelectorAll('.options__accordion');
+
+  accordionElement.forEach((element) => {
+    element.addEventListener("click", accordionClickHandler);
+  })
+
+  function accordionClickHandler(e) {
+    const currentAccordion = e.target.closest(".options__accordion");
+    currentAccordion.classList.toggle("options__accordion_active");
+    currentAccordion.querySelector(".options__accordion-container-span").classList.toggle("options__accordion-container-span_active");
+    currentAccordion.querySelector(".options__accordion-arrow").classList.toggle("options__accordion-arrow_active");
+    currentAccordion.querySelector(".options__accordion-arrow-path").classList.toggle("options__accordion-arrow-path_active");
+    e.preventDefault();
+
+    if (currentAccordion.classList.contains("options__accordion_active")) {
+      currentAccordion.querySelector(".options__content-container").style.maxHeight = currentAccordion.querySelector(".options__content-container").scrollHeight + 15 + "px";
+      currentAccordion.querySelector(".options__content-container").style.paddingTop = "15px";
+      currentAccordion.querySelector(".options__content-container").style.overflow = "visible";
+    } else {
+      currentAccordion.querySelector(".options__content-container").style.maxHeight = 0;
+      currentAccordion.querySelector(".options__content-container").style.paddingTop = 0;
+      currentAccordion.querySelector(".options__content-container").style.overflow = "hidden";
+    }
+  }
 });

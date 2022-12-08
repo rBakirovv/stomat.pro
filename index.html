@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/styles.css">
   <script type="text/javascript" charset="utf-8" async="" src="./js/requisitesModal.js"></script>
   <script type="text/javascript" charset="utf-8" async="" src="./js/callbackModal.js"></script>
+  <script type="text/javascript" charset="utf-8" async="" src="./js/orderModal.js"></script>
 </head>
 
 <body>
@@ -38,15 +39,79 @@
               <p class="navigation__phone-number">8 (495) 123-45-90</p>
               <p class="navigation__callback-text">Заказать обратный звонок</p>
             </a>
-            <a class="navigation__order-button" href="#">Сделать заказ</a>
+            <a class="navigation__order-button" href="#" id="open-order-modal-header"
+              onclick="openOrderModal();return false;">Сделать заказ</a>
           </div>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <section class="medicine">
-      <div class="medicine__container" id="medicine"></div>
+    <section class="medicine" id="medicine">
+      <div class="medicine__container">
+        <div class="medicine__content-container">
+          <h1 class="medicine__title">Убистезин форте</h1>
+          <p class="medicine__subtitle">Комбинированный препарат <br>
+            для <span class="medicine__subtitle-span">местной анестезии</span> в стоматологии</p>
+          <!-- дублируется для адаптива планшетов/мобилок -->
+          <div class="medicine__image-main-container medicine__image-main-container_mobile">
+            <div class="medicine__image-container">
+              <img class="medicine__image" src="./img/medicine.png" alt="Убистезин форте">
+              <div class="medicine__image-manufacturer-container">
+                <div class="medicine__image-country">
+                  <img src="./img/USA.png" alt="США">
+                  CША
+                </div>
+                <div class="medicine__image-factory">
+                  <img src="./img/3M.png" alt="3M">
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="medicine__list">
+            <li class="medicine__list-item">
+              <div class="medicine__list-item-check">
+                <img src="./img/check-white.svg" alt="Галочка">
+              </div>
+              <p class="medicine__list-item-text">Входящий в его состав <span
+                  class="medicine__list-item-text-span">артикаин – местный анестетик</span>
+                амидного типа тиафеновой группы</p>
+            </li>
+            <li class="medicine__list-item">
+              <div class="medicine__list-item-check">
+                <img src="./img/check-white.svg" alt="Галочка">
+              </div>
+              <p class="medicine__list-item-text">Действие препарата начинается быстро <span
+                  class="medicine__list-item-text-span">– через 1-3 минуты</span>
+              </p>
+            </li>
+          </ul>
+          <div class="medicine__price-container">
+            <p class="medicine__price">Цена: <span class="medicine__price-span">7 500 ₽</span> / 1 шт.
+            <div class="medicine__price-stock"><span class="medicine__price-stock-span"></span> В наличии 368 шт</div>
+            </p>
+          </div>
+          <div class="medicine__buttons-container">
+            <a class="medicine__button-choose" href="#">Выбрать количество</a>
+            <a class="medicine__button-callback" href="#" id="open-callbacl-modal-banner" href="#"
+              onclick="openCallbackModal();return false;">Обратный звонок</a>
+          </div>
+        </div>
+        <div class="medicine__image-main-container">
+          <div class="medicine__image-container">
+            <img class="medicine__image" src="./img/medicine.png" alt="Убистезин форте">
+            <div class="medicine__image-manufacturer-container">
+              <div class="medicine__image-country">
+                <img src="./img/USA.png" alt="США">
+                CША
+              </div>
+              <div class="medicine__image-factory">
+                <img src="./img/3M.png" alt="3M">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="delivery" id="delivery">
       <div class="delivery__container">
@@ -146,6 +211,7 @@
             усилен трициклическими антидепрессантами
             и ингибиторами моноаминооксидазы. Взаимодействие подобного типа описано для эпинефрина и норадреналина при
             их использовании в качестве вазоконстрикторов в концентрациях 1:25000 и 1:80000 соответственно</p>
+          <!-- дублируется для адаптива планшетов/мобилок -->
           <img class="about-us__image_mobile" src="./img/about-us.png" alt="Офис">
           <p class="about-us__subtitle">Не следует назначать препарат на фоне лечения неселективными
             бета-адреноблокаторами, поскольку в этом случае высок риск развития гипертонического криза и выраженной
@@ -357,10 +423,49 @@
       <div class="modal__success-container">
         <img class="modal__success-image" src="./img/callback-success.svg" alt="Успешно">
         <h2 class="modal__title modal__title_success">Мы свяжемся с вами!</h2>
-        <p class="modal__subtitle">В скором времени <span class="modal__subtitle-span">наш менеджер</span> свяжется с
+        <p class="modal__subtitle"><span class="modal__subtitle-span">В скором времени</span> наш менеджер <br> свяжется
+          с
           вами</p>
         <a class="modal__success-close" id="close-callback-success-modal" href="#"
           onclick="closeCallbackModal();return false;">Закрыть окно</a>
+      </div>
+    </div>
+  </section>
+  <section class="order">
+    <div class="modal__container">
+      <div class="close-button">
+        <img class="close-button__image" src="./img/close-icon.svg" alt="закрыть">
+      </div>
+      <div class="modal__content-container">
+        <h2 class="modal__title">Оформление заказа</h2>
+        <form class="modal__form">
+          <div class="modal__input-container">
+            <label class="modal__input-label">Ваше имя<span class="modal__input-label-span">*</span></label>
+            <input class="modal__input" type="text" name="name" placeholder="Введите данные" required>
+          </div>
+          <div class="modal__input-container">
+            <label class="modal__input-label">E-mail<span class="modal__input-label-span">*</span></label>
+            <input class="modal__input" type="email" name="email" placeholder="Введите данные" required>
+          </div>
+          <div class="modal__input-container">
+            <label class="modal__input-label">Телефон<span class="modal__input-label-span">*</span></label>
+            <input class="modal__input modal__input-phone" type="tel" name="phone" placeholder="+7 495 123-45-90"
+              required>
+            <div class="modal__input-phone-valid-icon">
+              <img src="./img/check-green.svg" alt="Валидно">
+            </div>
+          </div>
+          <button class="modal__submit" type="submit">Оформить заказ</button>
+        </form>
+      </div>
+      <div class="modal__success-container">
+        <img class="modal__success-image" src="./img/callback-success.svg" alt="Успешно">
+        <h2 class="modal__title modal__title_success">Заказ оформлен!</h2>
+        <p class="modal__subtitle"><span class="modal__subtitle-span">Ваш заказ #1315</span> оформлен. <br>
+          Наш менеджер свяжется с вами <br>
+          в ближайшее время</p>
+        <a class="modal__success-close" id="close-order-success-modal" href="#"
+          onclick="closeOrderModal();return false;">Закрыть окно</a>
       </div>
     </div>
   </section>

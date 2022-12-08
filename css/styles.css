@@ -297,6 +297,409 @@
   }
 }
 
+/* medicine */
+
+.medicine {
+  display: flex;
+  justify-content: center;
+  background: #EDF3FE;
+  /* time to */
+  min-height: 660px;
+}
+
+.medicine__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.medicine__content-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 150px;
+}
+
+.medicine__title {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 73px;
+  color: #223D4E;
+  margin: 0;
+}
+
+.medicine__subtitle {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 145%;
+  letter-spacing: -0.01em;
+  color: #223D4E;
+  margin: 10px 0 0;
+  max-width: 530px;
+}
+
+.medicine__subtitle-span {
+  font-weight: 700;
+  color: #4F43A7;
+}
+
+.medicine__list {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  list-style-type: none;
+  margin-top: 25px;
+  padding: 0;
+}
+
+.medicine__list-item {
+  align-items: baseline;
+  display: flex;
+  gap: 10px;
+}
+
+.medicine__list-item-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F38252;
+  border-radius: 50%;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.medicine__list-item-text {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 155.5%;
+  letter-spacing: -0.01em;
+  color: #223D4E;
+  margin: 0;
+  max-width: 540px;
+}
+
+.medicine__list-item-text-span {
+  font-weight: 700;
+}
+
+.medicine__price-container {
+  position: relative;
+  margin-top: 35px;
+}
+
+.medicine__price {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #223D4E;
+  margin: 0;
+}
+
+.medicine__price-span {
+  font-size: 55px;
+  line-height: 65px;
+  color: #4F43A7;
+}
+
+.medicine__price-stock {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #52B39D;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -20px;
+  left: 45%;
+  gap: 8px;
+  width: 155px;
+  height: 29px;
+  background: #FFFFFF;
+  border-radius: 15px 15px 15px 2px;
+}
+
+.medicine__price-stock-span {
+  background: #52B39D;
+  border: 3px solid rgba(82, 179, 157, 0.3);
+  border-radius: 555px;
+  width: 4px;
+  height: 4px;
+}
+
+.medicine__buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.medicine__button-choose {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 65px;
+  background: #4F43A7;
+  box-shadow: 0px 4px 10px rgba(99, 151, 248, 0.3);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+}
+
+.medicine__button-choose:hover {
+  background: #5A4AD2;
+}
+
+.medicine__button-callback {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 245px;
+  height: 65px;
+  background: #F38252;
+  box-shadow: 0px 4px 10px rgba(99, 151, 248, 0.3);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+}
+
+.medicine__button-callback:hover {
+  background: #FF6E30;
+}
+
+.medicine__image-main-container_mobile {
+  display: none;
+}
+
+.medicine__image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.medicine__image-manufacturer-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  max-width: 250px;
+  right: 45%;
+  bottom: 15%;
+}
+
+.medicine__image-country {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #223D4E;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(1.88406px);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 108px;
+  height: 47px;
+}
+
+.medicine__image-factory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 245.72px;
+  height: 65px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(1.88406px);
+  border-radius: 282.609px;
+}
+
+@media screen and (max-width: 1500px) {
+  .medicine__container {
+    max-width: 95%;
+  }
+
+  .medicine__content-container {
+    padding-left: 0;
+  }
+
+  .medicine__image {
+    width: 100%;
+  }
+
+  .medicine__image-manufacturer-container {
+    right: 40%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .medicine {
+    overflow: hidden;
+  }
+
+  .medicine__image {
+    width: auto;
+  }
+
+  .medicine__image-manufacturer-container {
+    right: inherit;
+    left: 10%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .medicine {
+    overflow: visible;
+  }
+
+  .medicine__content-container {
+    padding-top: 15px;
+    overflow: hidden;
+  }
+
+  .medicine__container {
+    max-width: none;
+  }
+
+  .medicine__content-container {
+    align-items: center;
+    text-align: center;
+  }
+
+  .medicine__image-main-container {
+    display: none;
+  }
+
+  .medicine__image-main-container_mobile {
+    display: block;
+  }
+
+  .medicine__image {
+    position: relative;
+    right: -10%;
+    width: 100%;
+  }
+
+  .medicine__image-manufacturer-container {
+    flex-direction: row;
+    gap: 5px;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+  }
+
+  .medicine__image-country {
+    min-width: 108px;
+    max-width: 108px;
+    min-height: 47px;
+    max-height: 47px;
+  }
+
+  .medicine__image-factory {
+    min-width: 178px;
+    max-width: 178px;
+    min-height: 47px;
+    max-height: 47px;
+  }
+
+  .medicine__image-factory img {
+    width: 140px;
+  }
+
+  .medicine__list {
+    margin-top: 15px;
+  }
+
+  .medicine__list-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .medicine__price-container {
+    margin-top: 54px;
+  }
+
+  .medicine__price-stock {
+    top: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .medicine__buttons-container {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .medicine__button-choose {
+    display: none;
+  }
+
+  .medicine__button-callback {
+    width: 326px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .medicine__title {
+    font-size: 38px;
+    line-height: 45px;
+  }
+
+  .medicine__subtitle {
+    font-size: 20px;
+    line-height: 145%;
+  }
+
+  .medicine__list {
+    padding: 0 20px;
+  }
+
+  .medicine__list-item-text {
+    font-size: 16px;
+    line-height: 155.5%;
+  }
+
+  .medicine__image-manufacturer-container {
+    bottom: 5px;
+  }
+}
+
 /* delivery */
 
 .delivery {
@@ -408,6 +811,10 @@
 
 .delivery__card-link {
   color: #4F43A7;
+}
+
+.delivery__card-link:hover {
+  text-decoration: none;
 }
 
 .delivery__card-span {
@@ -862,6 +1269,34 @@
   visibility: visible;
   opacity: 1;
 }
+
+/* order */
+
+.order {
+  display: flex;
+  position: fixed;
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(79, 67, 167, .8);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.4s, opacity 0.4s linear;
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+}
+
+.order_active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* modal */
 
 .modal__container {
   position: relative;

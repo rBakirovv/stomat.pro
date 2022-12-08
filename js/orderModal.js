@@ -1,38 +1,38 @@
-const callbackModal = document.querySelector('.callback');
-const callbackContentContainer = callbackModal.querySelector('.modal__content-container');
-const callbackSuccessContainer = callbackModal.querySelector('.modal__success-container');
-const modalCallbackForm = callbackModal.querySelector('.modal__form');
-const phoneInputCallbackItem = callbackModal.querySelector('.modal__input-phone');
-const submitCallbackButton = callbackModal.querySelector('.modal__submit');
-const inputCallbackCheckItem = callbackModal.querySelector('.modal__input-phone-valid-icon');
+const orderModal = document.querySelector('.order');
+const orderContentContainer = orderModal.querySelector('.modal__content-container');
+const orderSuccessContainer = orderModal.querySelector('.modal__success-container');
+const modalOrderForm = orderModal.querySelector('.modal__form');
+const phoneInputOrderItem = orderModal.querySelector('.modal__input-phone');
+const submitOrderButton = orderModal.querySelector('.modal__submit');
+const inputOrderCheckItem = orderModal.querySelector('.modal__input-phone-valid-icon');
 
-const openCallbackModal = () => {
-  callbackModal.classList.add('callback_active');
-  callbackModal.addEventListener("click", handleCloseCallbackModal);
+const openOrderModal = () => {
+  orderModal.classList.add('order_active');
+  orderModal.addEventListener("click", handleCloseOrderModal);
 
-  callbackContentContainer.classList.contains('modal__content-container_hidden') && callbackContentContainer.classList.remove('modal__content-container_hidden');
-  callbackSuccessContainer.classList.contains('modal__success-container_visible') && callbackSuccessContainer.classList.remove('modal__success-container_visible');
+  orderContentContainer.classList.contains('modal__content-container_hidden') && orderContentContainer.classList.remove('modal__content-container_hidden');
+  orderContentContainer.classList.contains('modal__success-container_visible') && orderContentContainer.classList.remove('modal__success-container_visible');
 };
 
-const handleCloseCallbackModal = (e) => {
+const handleCloseOrderModal = (e) => {
   if (e.target.classList.contains('close-button')) {
-    closeCallbackModal();
-    callbackModal.removeEventListener("click", handleCloseCallbackModal);
+    closeOrderModal();
+    orderModal.removeEventListener("click", handleCloseOrderModal);
   }
-  if (e.target.classList.contains('callback_active')) {
-    closeCallbackModal();
-    callbackModal.removeEventListener("click", handleCloseCallbackModal);
+  if (e.target.classList.contains('order_active')) {
+    closeOrderModal();
+    orderModal.removeEventListener("click", handleCloseOrderModal);
   }
 }
 
-const closeCallbackModal = () => {
-  callbackModal.classList.remove("callback_active");
+const closeOrderModal = () => {
+  orderModal.classList.remove("order_active");
 };
 
-function handleCallbackSubmit(e) {
+function handleOrderSubmit(e) {
   e.preventDefault();
-  callbackContentContainer.classList.add('modal__content-container_hidden');
-  callbackSuccessContainer.classList.add('modal__success-container_visible');
+  orderContentContainer.classList.add('modal__content-container_hidden');
+  orderSuccessContainer.classList.add('modal__success-container_visible');
 };
 
 var phoneInputs = document.querySelectorAll('.modal__input-phone');
@@ -100,16 +100,16 @@ var onPhoneInput = function (e) {
   input.value = formattedInputValue;
 
   if (!regexPhone.test(formattedInputValue)) {
-    submitCallbackButton.disabled = true;
-    if (phoneInputCallbackItem.classList.contains('modal__input_valid')) {
-      phoneInputCallbackItem.classList.remove('modal__input_valid');
-      inputCallbackCheckItem.classList.remove('modal__input-phone-valid-icon_active');
+    submitOrderButton.disabled = true;
+    if (phoneInputOrderItem.classList.contains('modal__input_valid')) {
+      phoneInputOrderItem.classList.remove('modal__input_valid');
+      inputOrderCheckItem.classList.remove('modal__input-phone-valid-icon_active');
     };
-    phoneInputCallbackItem.classList.remove
+    phoneInputOrderItem.classList.remove
   } else {
-    submitCallbackButton.disabled = false;
-    phoneInputCallbackItem.classList.add('modal__input_valid');
-    inputCallbackCheckItem.classList.add('modal__input-phone-valid-icon_active');
+    submitOrderButton.disabled = false;
+    phoneInputOrderItem.classList.add('modal__input_valid');
+    inputOrderCheckItem.classList.add('modal__input-phone-valid-icon_active');
   };
 }
 var onPhoneKeyDown = function (e) {
@@ -125,4 +125,4 @@ for (var phoneInput of phoneInputs) {
   phoneInput.addEventListener('paste', onPhonePaste, false);
 }
 
-modalCallbackForm.addEventListener("submit", handleCallbackSubmit);
+modalOrderForm.addEventListener("submit", handleOrderSubmit);

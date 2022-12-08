@@ -8,6 +8,10 @@
   background: 0;
 }
 
+main {
+  overflow: hidden;
+}
+
 @font-face {
   font-family: "Raleway";
   src: url(../fonts/Raleway-Thin.ttf);
@@ -303,8 +307,34 @@
   display: flex;
   justify-content: center;
   background: #EDF3FE;
-  /* time to */
+  position: relative;
   min-height: 660px;
+}
+
+.medicine::after {
+  content: '';
+  position: absolute;
+  width: 403.35px;
+  height: 416.95px;
+  left: -190px;
+  top: 100px;
+  background: rgba(124, 153, 255, 0.35);
+  filter: blur(150px);
+  transform: matrix(-0.06, 1, -1, -0.06, 0, 0);
+  border-radius: 50%;
+}
+
+.medicine::before {
+  content: '';
+  position: absolute;
+  width: 403.35px;
+  height: 416.95px;
+  right: -190px;
+  top: 100px;
+  background: rgba(124, 153, 255, 0.27);
+  filter: blur(150px);
+  transform: matrix(-0.06, 1, -1, -0.06, 0, 0);
+  z-index: 2;
 }
 
 .medicine__container {
@@ -314,6 +344,8 @@
 }
 
 .medicine__content-container {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   padding-left: 150px;
@@ -505,9 +537,10 @@
 
 .medicine__number-input::-webkit-outer-spin-button,
 .medicine__number-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 .medicine__number-button {
@@ -657,6 +690,14 @@
     overflow: visible;
   }
 
+  .medicine::after {
+    display: none;
+  }
+
+  .medicine::before {
+    display: none;
+  }
+
   .medicine__content-container {
     padding-top: 15px;
     overflow: hidden;
@@ -768,6 +809,279 @@
 
   .medicine__image-manufacturer-container {
     bottom: 5px;
+  }
+}
+
+/* options */
+
+.options {
+  background: linear-gradient(180deg, #EAF1FE 0%, #F4F8FF 100%);
+  border-radius: 0px 0px 50px 50px;
+  padding-bottom: 116px;
+}
+
+.options__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 0px 0px 50px 50px;
+}
+
+.options__tabs-container {
+  width: 100%;
+  max-width: 1360px;
+  background: #fff;
+  border-radius: 25px;
+}
+
+.options__tabs {
+  display: flex;
+  /*background: linear-gradient(to bottom, #EBF2FF, #fff);*/
+  background: #EBF2FF;
+  width: 100%;
+  border-radius: 1rem 0;
+}
+
+.options__tab {
+  width: 100%;
+  height: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #EBF2FF;
+  cursor: pointer;
+  border-radius: 25px 25px 0 0;
+}
+
+/*
+.options__tab:first-of-type {
+  background: #fff;
+  border-radius: 25px 25px 0 0;
+}
+*/
+
+/*
+.options__tab:last-of-type {
+  background: #EBF2FF;
+  border-radius: 0 25px 0 25px;
+}
+*/
+
+.options__tab_active {
+  background: #fff;
+}
+
+.options__tab_active .options__tab-title {
+  color: #223D4E;
+  border-bottom: 1px dashed #223D4E;
+}
+
+.options__tab-title {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+  color: #4F43A7;
+  border-bottom: 1px dashed #4F43A7;
+  margin: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.options__tab-title_active {
+  color: #223D4E;
+  border-bottom: 1px dashed #223D4E;
+}
+
+.options__tab-title:hover {
+  border-bottom: 1px dashed transparent;
+}
+
+.options__content-container {
+  background: #fff;
+  border-radius: 25px;
+  padding: 40px 115px 90px;
+  width: 100%;
+  display: none;
+}
+
+.options__content-container_active {
+  display: block;
+}
+
+.options__content-item:not(:first-of-type) {
+  margin-top: 60px;
+}
+
+.options__content-title {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #223D4E;
+  margin: 0;
+}
+
+.options__content-text {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 175%;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #223D4E;
+  margin: 15px 0 0;
+}
+
+.options__content-text_mt {
+  margin-top: 30px;
+}
+
+.options__content-link {
+  color: #4F43A7;
+}
+
+.options__content-link:hover {
+  text-decoration: none;
+}
+
+.options__content-span {
+  font-weight: 600;
+}
+
+.options__content-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 1000px;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.options__content-option {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.options__content-option-title-container {
+  display: flex;
+  align-items: flex-start;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 346px;
+  overflow: hidden;
+}
+
+.options__content-option-title {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 175%;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #838383;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.options__content-dots {
+  min-width: 100%;
+  border-bottom: 1px dashed #BFBFBF;
+  transform: translateY(20.5px);
+}
+
+.options__content-option-subtitle {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 175%;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #223D4E;
+  width: 100%;
+  text-align: left;
+}
+
+.options__content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+  padding-left: 15px;
+}
+
+.options__content-list_mt {
+  margin-top: 30px;
+}
+
+.options__content-list_purple .options__content-list-item::marker {
+  color: #4F43A7;
+}
+
+.options__content-list_orange .options__content-list-item::marker {
+  color: #F38252;
+}
+
+.options__content-list-item {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #223D4E;
+  margin: 0;
+}
+
+.options__content-link-up {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  text-decoration: none;
+  margin-top: 40px;
+}
+
+.options__content-link-up-span {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.01em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #4F43A7;
+  border-bottom: 1px dashed #4F43A7;
+  transition: all 0.4s ease-in-out;
+}
+
+.options__content-link-up:hover .options__content-link-up-span {
+  border-bottom: 1px dashed transparent;
+}
+
+@media screen and (max-width: 1400px) {
+  .options__container {
+    padding: 0 20px;
+  }
+
+  .options__content-container {
+    padding: 40px 40px 90px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .options {
+    padding: 40px 0 10px;
+  }
+  .options__tabs-container {
+    display: none;
   }
 }
 

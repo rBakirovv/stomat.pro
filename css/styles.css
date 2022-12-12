@@ -800,10 +800,6 @@ main {
     margin-top: 15px;
   }
 
-  .medicine__button-choose {
-    display: none;
-  }
-
   .medicine__button-callback {
     width: 326px;
   }
@@ -1844,6 +1840,25 @@ main {
   opacity: 1;
 }
 
+.order .modal__input {
+  width: 316px;
+}
+
+@media screen and (max-width: 750px) {
+  .order .modal__form {
+    padding-top: 25px;
+  }
+
+  .order .modal__form-inputs-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .order .modal__input {
+    width: 100%;
+  }
+}
+
 /* modal */
 
 .modal__container {
@@ -1931,10 +1946,6 @@ main {
   transition: all 0.4s ease-in-out;
 }
 
-.order .modal__input {
-  width: 316px;
-}
-
 .modal__input-container {
   position: relative;
 }
@@ -1983,6 +1994,7 @@ main {
   cursor: pointer;
   transition: all 0.4s ease-in-out;
   margin-top: 25px;
+  min-width: 290px;
 }
 
 .modal__submit:hover {
@@ -2075,6 +2087,12 @@ main {
   }
 }
 
+@media screen and (max-width: 750px) {
+  .modal__line {
+    display: none;
+  }
+}
+
 /* order-form */
 
 .order__form {
@@ -2145,6 +2163,10 @@ main {
   margin: 20px 0 0;
 }
 
+.order__item-price-total_mobile {
+  display: none;
+}
+
 .order__item-price-simbol {
   font-weight: 400;
   font-size: 18px;
@@ -2158,6 +2180,108 @@ main {
 .order__item-price-simbol_last {
   margin-top: 35px;
   margin-left: 44px;
+}
+
+@media screen and (max-width: 750px) {
+  .order__form-item-image {
+    width: 78px;
+    height: 78px;
+  }
+
+  .order__item-title {
+    font-size: 16px;
+    line-height: 145%;
+    margin-top: 3px;
+  }
+
+  .order__item-price-container {
+    width: 100%;
+    /*transform: translateX(-93px);*/
+    margin-left: -90px;
+  }
+
+  .order__item-price-name {
+    display: none;
+  }
+
+  .order__item-price {
+    position: relative;
+    left: 50%;
+    transform: translateX(-35%);
+  }
+
+  .order__item-price:nth-child(1) {
+    display: none;
+  }
+
+  .order__item-price:nth-child(2) {
+    display: none;
+  }
+
+  .order__item-price:nth-child(4) {
+    display: none;
+  }
+
+  .order__item-price:nth-child(5) {
+    display: none;
+  }
+
+  .medicine__button-number {
+    width: 100%;
+  }
+
+  .medicine__number-input {
+    width: 200px;
+  }
+
+  .medicine__number-input {
+    transform: translateX(0px);
+  }
+
+  .medicine__number-button:first-of-type {
+    transform: translateX(5px);
+  }
+
+  .medicine__number-button:last-of-type {
+    transform: translateX(-5px);
+  }
+
+  .order__item-price-total_mobile {
+    display: flex;
+    justify-content: space-between;
+    max-width: 310px;
+    margin: 0 0 15px;
+  }
+
+  .order__item-price-name_mobile {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #838383;
+    margin: 0;
+  }
+
+  .order__item-price_mobile {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: -0.01em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #223D4E;
+    margin: 5px 0 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .order {
+    padding: 90px 0 10px;
+  }
 }
 
 /* UI */

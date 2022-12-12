@@ -20,6 +20,7 @@ function increment() {
   inputNumberElement.value = parseInt(inputNumberElement.value) + 1;
 
   document.getElementById('total-price').textContent = inputNumberElement.value * 7500;
+  document.getElementById('total-price-mobile').textContent = inputNumberElement.value * 7500;
 };
 
 // - 1
@@ -32,6 +33,7 @@ function decrement() {
   };
 
   document.getElementById('total-price').textContent = inputNumberElement.value * 7500;
+  document.getElementById('total-price-mobile').textContent = inputNumberElement.value * 7500;
 };
 
 /*

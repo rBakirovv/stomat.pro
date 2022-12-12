@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", function () {
     anchor.addEventListener('click', function (e) {
       e.preventDefault()
 
-      const blockID = anchor.getAttribute('href').substr(1)
+      const blockID = anchor.getAttribute('href').substr(1);
 
       document.getElementById(blockID).scrollIntoView({
         behavior: 'smooth',
@@ -46,9 +46,11 @@ window.addEventListener("DOMContentLoaded", function () {
   function selectTabNav() {
     tabNav.forEach(item => {
       item.classList.remove('options__tab_active');
+      item.classList.remove(item.getAttribute('data-tab-name'));
     });
     this.classList.add('options__tab_active');
     tabName = this.getAttribute('data-tab-name');
+    this.classList.add(tabName);
     selectTabContent(tabName);
   }
 

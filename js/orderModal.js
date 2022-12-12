@@ -18,6 +18,8 @@ const inputNumberElement = document.querySelector('.medicine__number-input');
 
 function increment() {
   inputNumberElement.value = parseInt(inputNumberElement.value) + 1;
+
+  document.getElementById('total-price').textContent = inputNumberElement.value * 7500;
 };
 
 // - 1
@@ -28,12 +30,16 @@ function decrement() {
   if (inputNumberElement.value < 1) {
     inputNumberElement.value = 1;
   };
+
+  document.getElementById('total-price').textContent = inputNumberElement.value * 7500;
 };
 
+/*
 function toggleNumberSelection() {
   chooseMedicineQuantity.classList.add('medicine__button-choose_hidden');
   chooseMedicineQuantityButton.classList.add('medicine__button-number_visible');
 }
+*/
 
 const openOrderModal = () => {
   orderModal.classList.add('order_active');
@@ -64,7 +70,7 @@ function handleOrderSubmit(e) {
   orderSuccessContainer.classList.add('modal__success-container_visible');
 };
 
-var phoneInputs = document.querySelectorAll('.modal__input-phone');
+var phoneInputs = orderModal.querySelectorAll('.modal__input-phone');
 
 var getInputNumbersValue = function (input) {
   // Return stripped input value — just numbers

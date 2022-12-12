@@ -34,13 +34,11 @@
             <a class="navigation__link" href="#about-us">Контакты</a>
           </div>
           <div class="navigation__callback-container">
-            <a class="navigation__phone-number-container" href="#" id="open-callbacl-modal-header" href="#"
-              onclick="openCallbackModal();return false;">
+            <a class="navigation__phone-number-container" href="javascript:openCallbackModal();">
               <p class="navigation__phone-number">8 (495) 123-45-90</p>
               <p class="navigation__callback-text">Заказать обратный звонок</p>
             </a>
-            <a class="navigation__order-button" href="#" id="open-order-modal-header"
-              onclick="openOrderModal();return false;">Сделать заказ</a>
+            <a class="navigation__order-button" href="javascript:openOrderModal();">Сделать заказ</a>
           </div>
         </div>
       </div>
@@ -92,17 +90,8 @@
             </p>
           </div>
           <div class="medicine__buttons-container">
-            <a class="medicine__button-choose" id="choose-medicine-quantity" href="#"
-              onclick="toggleNumberSelection();return false;">Выбрать количество</a>
-            <form class="medicine__button-number">
-              <button class="medicine__number-button" id="decrement-medicine-number" href="#"
-                onclick="decrement();return false;">-</button>
-              <input class="medicine__number-input" type="number" value="1" min="1">
-              <button class="medicine__number-button" id="increment-medicine-number" href="#"
-                onclick="increment();return false;">+</button>
-            </form>
-            <a class="medicine__button-callback" href="#" id="open-callbacl-modal-banner" href="#"
-              onclick="openCallbackModal();return false;">Обратный звонок</a>
+            <a class="medicine__button-choose" href="javascript:openOrderModal()">Выбрать количество</a>
+            <a class="medicine__button-callback" href="javascript:openCallbackModal();">Обратный звонок</a>
           </div>
         </div>
         <div class="medicine__image-main-container">
@@ -125,7 +114,8 @@
       <div class="options__container">
         <div class="options__tabs-container">
           <div class="options__tabs">
-            <div class="options__tab options__tab_active" data-tab-name="options__content-container-1">
+            <div class="options__tab options__tab_active options__content-container-1"
+              data-tab-name="options__content-container-1">
               <h4 class="options__tab-title">Описание товара</h4>
             </div>
             <div class="options__tab" data-tab-name="options__content-container-2">
@@ -320,7 +310,8 @@
       <div class="options__accordion">
         <div class="options__accordion-container">
           <span class="options__accordion-container-span">Характеристики</span>
-          <svg class="options__accordion-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="options__accordion-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <path class="options__accordion-arrow-path" d="M8 1L16 9L8 17" stroke="#4F43A7" stroke-width="2" />
           </svg>
         </div>
@@ -519,8 +510,7 @@
           <p class="about-us__subtitle">Не следует назначать препарат на фоне лечения неселективными
             бета-адреноблокаторами, поскольку в этом случае высок риск развития гипертонического криза и выраженной
             брадикардии.</p>
-          <a class="about-us__link" class="requisites__close_mobile" id="open-requisites-modal" href="#"
-            onclick="openRequisitesModal();return false;">
+          <a class="about-us__link" class="requisites__close_mobile" href="javascript:openRequisitesModal();">
             <svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M18.2466 5.38943L14.6106 1.75343C14.1284 1.27129 13.474 1 12.7926 1H3.57143C2.15071 1 1 2.15071 1 3.57143V21.5714C1 22.9921 2.15071 24.1429 3.57143 24.1429H16.4286C17.8493 24.1429 19 22.9921 19 21.5714V7.20743C19 6.526 18.7287 5.87157 18.2466 5.38943V5.38943Z"
@@ -563,13 +553,11 @@
             ИНН: 1117746533145; ОГРН: 7704785911
           </p>
           <div class="navigation__callback-container navigation__callback-container_footer">
-            <a class="navigation__phone-number-container" href="#" id="open-callbacl-modal-footer" href="#"
-              onclick="openCallbackModal();return false;">
+            <a class="navigation__phone-number-container" href="javascript:openCallbackModal();">
               <p class="navigation__phone-number">8 (495) 123-45-90</p>
               <p class="navigation__callback-text">Заказать обратный звонок</p>
             </a>
-            <a class="navigation__order-button" href="#" id="open-order-modal-footer"
-            onclick="openOrderModal();return false;">Сделать заказ</a>
+            <a class="navigation__order-button" href="javascript:openOrderModal();">Сделать заказ</a>
           </div>
         </div>
       </div>
@@ -697,8 +685,7 @@
           <p class="requisites__list-item-subtitle">Безсмертная Яна Анатольевна</p>
         </li>
       </ul>
-      <a class="requisites__close_mobile" id="close-requisites-modal-mobile" href="#"
-        onclick="closeRequisitesModal();return false;">Закрыть окно</a>
+      <a class="requisites__close_mobile" href="javascript:closeRequisitesModal();">Закрыть окно</a>
     </div>
   </section>
   <section class="callback">
@@ -708,7 +695,7 @@
       </div>
       <div class="modal__content-container">
         <h2 class="modal__title">Заказать обратный <br> звонок</h2>
-        <form class="modal__form">
+        <form class="modal__form modal__form_callback">
           <div class="modal__input-container">
             <label class="modal__input-label">Ваше имя<span class="modal__input-label-span">*</span></label>
             <input class="modal__input" type="text" name="name" placeholder="Введите данные" required>
@@ -730,8 +717,7 @@
         <p class="modal__subtitle"><span class="modal__subtitle-span">В скором времени</span> наш менеджер <br> свяжется
           с
           вами</p>
-        <a class="modal__success-close" id="close-callback-success-modal" href="#"
-          onclick="closeCallbackModal();return false;">Закрыть окно</a>
+        <a class="modal__success-close" href="javascript:closeCallbackModal();">Закрыть окно</a>
       </div>
     </div>
   </section>
@@ -742,21 +728,93 @@
       </div>
       <div class="modal__content-container">
         <h2 class="modal__title">Оформление заказа</h2>
+        <form class="order__form">
+          <h6 class="modal__inputs-title">Cостав заказа</h6>
+          <div class="order__form-item-container">
+            <img class="order__form-item-image" src="./img/item.png" alt="Убестизин форте р-р д/ин. 1,7мл № 50">
+            <div class="order__form-item-text-container">
+              <p class="order__item-subtitle">Вспомогательные вещества</p>
+              <h3 class="order__item-title">Убестизин форте р-р д/ин. 1,7мл № 50</h3>
+              <div class="order__item-price-container">
+                <div class="order__item-price">
+                  <p class="order__item-price-name">Цена</p>
+                  <p class="order__item-price-total">7500 ₽</p>
+                </div>
+                <div class="order__item-price">
+                  <p class="order__item-price-simbol">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L13 13" stroke="url(#paint0_radial_105_776)" />
+                      <path d="M13 1L1 13" stroke="url(#paint1_radial_105_776)" />
+                      <defs>
+                        <radialGradient id="paint0_radial_105_776" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                          gradientTransform="translate(7 7) rotate(90) scale(6)">
+                          <stop stop-color="#223D4E" />
+                          <stop offset="1" stop-color="#223D4E" stop-opacity="0" />
+                        </radialGradient>
+                        <radialGradient id="paint1_radial_105_776" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                          gradientTransform="translate(7 7) rotate(90) scale(6)">
+                          <stop stop-color="#223D4E" />
+                          <stop offset="1" stop-color="#223D4E" stop-opacity="0" />
+                        </radialGradient>
+                      </defs>
+                    </svg>
+                  </p>
+                </div>
+                <div class="order__item-price">
+                  <p class="order__item-price-name">Количество</p>
+                  <div class="medicine__button-number">
+                    <button class="medicine__number-button" id="decrement-medicine-number"
+                      onclick="decrement();return false;">-</button>
+                    <input class="medicine__number-input" type="number" value="1" min="1">
+                    <button class="medicine__number-button" id="increment-medicine-number"
+                      onclick="increment();return false;">+</button>
+                  </div>
+                </div>
+                <div class="order__item-price">
+                  <p class="order__item-price-simbol order__item-price-simbol_last">
+                    <svg width="12" height="4" viewBox="0 0 12 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M0 1H12V0H0V1ZM0 4H12V3H0V4Z"
+                        fill="url(#paint0_radial_105_780)" />
+                      <defs>
+                        <radialGradient id="paint0_radial_105_780" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                          gradientTransform="translate(0 3) scale(12 48)">
+                          <stop offset="0.0488858" stop-opacity="0" />
+                          <stop offset="0.524185" />
+                          <stop offset="0.98108" stop-opacity="0" />
+                        </radialGradient>
+                      </defs>
+                    </svg>
+                  </p>
+                </div>
+                <div class="order__item-price">
+                  <p class="order__item-price-name">Итог</p>
+                  <p class="order__item-price-total"> <span id="total-price">7500</span> ₽</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
         <form class="modal__form">
-          <div class="modal__input-container">
-            <label class="modal__input-label">Ваше имя<span class="modal__input-label-span">*</span></label>
-            <input class="modal__input" type="text" name="name" placeholder="Введите данные" required>
-          </div>
-          <div class="modal__input-container">
-            <label class="modal__input-label">E-mail<span class="modal__input-label-span">*</span></label>
-            <input class="modal__input" type="email" name="email" placeholder="Введите данные" required>
-          </div>
-          <div class="modal__input-container">
-            <label class="modal__input-label">Телефон<span class="modal__input-label-span">*</span></label>
-            <input class="modal__input modal__input-phone" type="tel" name="phone" placeholder="+7 495 123-45-90"
-              required>
-            <div class="modal__input-phone-valid-icon">
-              <img src="./img/check-green.svg" alt="Валидно">
+          <div class="modal__line"></div>
+          <h6 class="modal__inputs-title">Личные данные</h6>
+          <div class="modal__form-inputs-container">
+            <div class="modal__input-container">
+              <label class="modal__input-label">Ваше имя<span class="modal__input-label-span">*</span></label>
+              <input class="modal__input" type="text" name="name" placeholder="Введите данные" required>
+            </div>
+            <!--
+            <div class="modal__input-container">
+              <label class="modal__input-label">E-mail<span class="modal__input-label-span">*</span></label>
+              <input class="modal__input" type="email" name="email" placeholder="Введите данные" required>
+            </div>
+            -->
+            <div class="modal__input-container">
+              <label class="modal__input-label">Телефон<span class="modal__input-label-span">*</span></label>
+              <input class="modal__input modal__input-phone" type="tel" name="phone" placeholder="+7 495 123-45-90"
+                required>
+              <div class="modal__input-phone-valid-icon">
+                <img src="./img/check-green.svg" alt="Валидно">
+              </div>
             </div>
           </div>
           <button class="modal__submit" type="submit">Оформить заказ</button>
@@ -768,8 +826,7 @@
         <p class="modal__subtitle"><span class="modal__subtitle-span">Ваш заказ #1315</span> оформлен. <br>
           Наш менеджер свяжется с вами <br>
           в ближайшее время</p>
-        <a class="modal__success-close" id="close-order-success-modal" href="#"
-          onclick="closeOrderModal();return false;">Закрыть окно</a>
+        <a class="modal__success-close" href="javascript:closeOrderModal();">Закрыть окно</a>
       </div>
     </div>
   </section>

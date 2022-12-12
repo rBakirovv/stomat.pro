@@ -33,9 +33,15 @@ function handleCallbackSubmit(e) {
   e.preventDefault();
   callbackContentContainer.classList.add('modal__content-container_hidden');
   callbackSuccessContainer.classList.add('modal__success-container_visible');
+
+  const callbackModalInputs = callbackModal.querySelectorAll('.modal__input');
+
+  for (let callbackModalItemInput of callbackModalInputs) {
+    callbackModalItemInput.value = "";
+  };
 };
 
-var phoneInputs = document.querySelectorAll('.modal__input-phone');
+var phoneInputs = callbackModal.querySelectorAll('.modal__input-phone');
 
 var getInputNumbersValue = function (input) {
   // Return stripped input value — just numbers

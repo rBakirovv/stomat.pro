@@ -3,8 +3,12 @@ const orderContentContainer = orderModal.querySelector('.modal__content-containe
 const orderSuccessContainer = orderModal.querySelector('.modal__success-container');
 const modalOrderForm = orderModal.querySelector('.modal__form');
 const phoneInputOrderItem = orderModal.querySelector('.modal__input-phone');
+const nameInputOrderItem = orderModal.querySelector('.modal__input-name');
 const submitOrderButton = orderModal.querySelector('.modal__submit');
 const inputOrderCheckItem = orderModal.querySelector('.modal__input-phone-valid-icon');
+
+const nameRegexOrder = /^[А-Яа-яa-zA-Z- ]{1,30}$/;
+const regexPhoneOrder = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
 
 // выбрать кол-во
 
@@ -48,7 +52,7 @@ const openOrderModal = () => {
   orderModal.addEventListener("click", handleCloseOrderModal);
 
   orderContentContainer.classList.contains('modal__content-container_hidden') && orderContentContainer.classList.remove('modal__content-container_hidden');
-  orderContentContainer.classList.contains('modal__success-container_visible') && orderContentContainer.classList.remove('modal__success-container_visible');
+  orderSuccessContainer.classList.contains('modal__success-container_visible') && orderSuccessContainer.classList.remove('modal__success-container_visible');
 };
 
 const handleCloseOrderModal = (e) => {
@@ -68,8 +72,81 @@ const closeOrderModal = () => {
 
 function handleOrderSubmit(e) {
   e.preventDefault();
-  orderContentContainer.classList.add('modal__content-container_hidden');
-  orderSuccessContainer.classList.add('modal__success-container_visible');
+
+  // Валиден ли инпут имени
+  if (!nameRegexOrder.test(nameInputOrderItem.value)) {
+    if (orderModal.querySelector('.modal__input-name').classList.contains('modal__input_valid')) {
+      orderModal.querySelector('.modal__input-name').classList.remove('modal__input_valid');
+      orderModal.querySelector('.modal__input-name-valid-icon').classList.remove('modal__input-name-valid-icon_active');
+    }
+
+    orderModal.querySelector('.modal__input-name').classList.add('modal__input_no-valid');
+    orderModal.querySelector('.modal__input-name-no-valid-icon').classList.add('modal__input-name-no-valid-icon_active');
+  };
+
+  // Валиден ли инпут телефона
+  if (!orderModal.querySelector('.modal__input-phone').classList.contains('modal__input_valid')) {
+    if (orderModal.querySelector('.modal__input-phone').classList.contains('modal__input_valid')) {
+      orderModal.querySelector('.modal__input-phone').classList.remove('modal__input_valid');
+      orderModal.querySelector('.modal__input-phone-valid-icon').classList.remove('modal__input-phone-valid-icon_active');
+    }
+
+    orderModal.querySelector('.modal__input-phone').classList.add('modal__input_no-valid');
+    orderModal.querySelector('.modal__input-phone-no-valid-icon').classList.add('modal__input-phone-no-valid-icon_active');
+  };
+
+  if (nameRegexOrder.test(nameInputOrderItem.value) && orderModal.querySelector('.modal__input-phone').classList.contains('modal__input_valid')) {
+    orderModal.querySelector('.loader').classList.add('loader_active');
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', '../ajax.php', true);
+
+    xhr.send(orderModal.querySelector('.modal__input-phone').value);
+
+    xhr.onload = () => {
+      if (xhr.status >= 400) {
+        console.log(xhr.status);
+        return;
+      };
+
+      ComagicWidget.sitePhoneCall({
+        captcha_key: '',
+        captcha_value: '',
+        phone: orderModal.querySelector(".modal__input-phone").value,
+        group_id: '343750'
+      }, function (resp) {
+        console.log(resp)
+      });
+
+      orderModal.querySelector('.loader').classList.remove('loader_active');
+      orderContentContainer.classList.add('modal__content-container_hidden');
+      orderSuccessContainer.classList.add('modal__success-container_visible');
+
+      inputNumberElement.value = 1;
+
+      const orderModalInputs = modalOrderForm.querySelectorAll('.modal__input');
+
+      for (let orderModalItemInput of orderModalInputs) {
+        orderModalItemInput.value = "";
+      };
+
+      orderModal.querySelector('.modal__input-phone').classList.remove('modal__input_valid');
+      orderModal.querySelector('.modal__input-phone-valid-icon').classList.remove('modal__input-phone-valid-icon_active');
+
+      orderModal.querySelector('.modal__input-name').classList.remove('modal__input_valid');
+      orderModal.querySelector('.modal__input-name-valid-icon').classList.remove('modal__input-name-valid-icon_active');
+    };
+
+    xhr.onprogress = () => {
+      orderModal.querySelector('.loader').classList.add('loader_active');
+    };
+
+    xhr.onerror = () => {
+      orderModal.querySelector('.loader').classList.remove('loader_active');
+      console.log(xhr.response)
+    };
+  }
 };
 
 var phoneInputs = orderModal.querySelectorAll('.modal__input-phone');
@@ -100,8 +177,6 @@ var onPhoneInput = function (e) {
     selectionStart = input.selectionStart,
     formattedInputValue = "";
 
-  let regexPhone = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
-
   if (!inputNumbersValue) {
     return input.value = "";
   }
@@ -115,38 +190,36 @@ var onPhoneInput = function (e) {
     return;
   }
 
-  if (["7", "8", "9"].indexOf(inputNumbersValue[0]) > -1) {
-    if (inputNumbersValue[0] == "9") inputNumbersValue = "7" + inputNumbersValue;
-    var firstSymbols = (inputNumbersValue[0] == "8") ? "8" : "+7";
-    formattedInputValue = input.value = firstSymbols + " ";
-    if (inputNumbersValue.length > 1) {
-      formattedInputValue += '(' + inputNumbersValue.substring(1, 4);
-    }
-    if (inputNumbersValue.length >= 5) {
-      formattedInputValue += ') ' + inputNumbersValue.substring(4, 7);
-    }
-    if (inputNumbersValue.length >= 8) {
-      formattedInputValue += '-' + inputNumbersValue.substring(7, 9);
-    }
-    if (inputNumbersValue.length >= 10) {
-      formattedInputValue += '-' + inputNumbersValue.substring(9, 11);
-    }
-  } else {
-    formattedInputValue = '+' + inputNumbersValue.substring(0, 16);
+  var firstSymbols = "+7";
+  formattedInputValue = input.value = firstSymbols + " ";
+
+  if (inputNumbersValue.length > 1) {
+    formattedInputValue += '(' + inputNumbersValue.substring(1, 4);
   }
+  if (inputNumbersValue.length >= 5) {
+    formattedInputValue += ') ' + inputNumbersValue.substring(4, 7);
+  }
+  if (inputNumbersValue.length >= 8) {
+    formattedInputValue += '-' + inputNumbersValue.substring(7, 9);
+  }
+  if (inputNumbersValue.length >= 10) {
+    formattedInputValue += '-' + inputNumbersValue.substring(9, 11);
+  }
+
   input.value = formattedInputValue;
 
-  if (!regexPhone.test(formattedInputValue)) {
-    submitOrderButton.disabled = true;
+  if (!regexPhoneOrder.test(formattedInputValue)) {
     if (phoneInputOrderItem.classList.contains('modal__input_valid')) {
       phoneInputOrderItem.classList.remove('modal__input_valid');
       inputOrderCheckItem.classList.remove('modal__input-phone-valid-icon_active');
     };
     phoneInputOrderItem.classList.remove
   } else {
-    submitOrderButton.disabled = false;
     phoneInputOrderItem.classList.add('modal__input_valid');
     inputOrderCheckItem.classList.add('modal__input-phone-valid-icon_active');
+
+    orderModal.querySelector('.modal__input-phone').classList.remove('modal__input_no-valid');
+    orderModal.querySelector('.modal__input-phone-no-valid-icon').classList.remove('modal__input-phone-no-valid-icon_active');
   };
 }
 var onPhoneKeyDown = function (e) {
@@ -160,11 +233,29 @@ for (var phoneInput of phoneInputs) {
   phoneInput.addEventListener('keydown', onPhoneKeyDown);
   phoneInput.addEventListener('input', onPhoneInput, false);
   phoneInput.addEventListener('paste', onPhonePaste, false);
-}
+};
 
 inputNumberElement.addEventListener("change", (e) => {
   if (e.target.value < 0) {
     inputNumberElement.value = 1;
+  };
+});
+
+phoneInputOrderItem.addEventListener("click", () => {
+  if (phoneInputOrderItem.value === "") {
+    phoneInputOrderItem.value = "+7";
+  }
+});
+
+nameInputOrderItem.addEventListener('input', (e) => {
+  if (nameRegexOrder.test(e.target.value)) {
+    orderModal.querySelector('.modal__input-name').classList.add('modal__input_valid');
+    orderModal.querySelector('.modal__input-name-valid-icon').classList.add('modal__input-name-valid-icon_active');
+  };
+
+  if (orderModal.querySelector('.modal__input-name').classList.contains('modal__input_no-valid')) {
+    orderModal.querySelector('.modal__input-name').classList.remove('modal__input_no-valid');
+    orderModal.querySelector('.modal__input-name-no-valid-icon').classList.remove('modal__input-name-no-valid-icon_active');
   };
 });
 

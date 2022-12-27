@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>stomat.pro</title>
   <link rel="stylesheet" href="./css/styles.css">
+  <link type="Image/x-icon" href="./img/favicon/favicon.ico" rel="icon">
+  <script type="text/javascript" async=""
+    src="https://app.comagic.ru/static/cs.min.js?k=gDovXq0g5oBZSlfZsghzuEKaq8XUGmXa"></script>
   <script type="text/javascript" charset="utf-8" async="" src="./js/requisitesModal.js"></script>
   <script type="text/javascript" charset="utf-8" async="" src="./js/callbackModal.js"></script>
   <script type="text/javascript" charset="utf-8" async="" src="./js/orderModal.js"></script>
@@ -690,6 +693,13 @@
   </section>
   <section class="callback">
     <div class="modal__container">
+      <div class="loader">
+        <div class="preloader">
+          <div class="preloader__container">
+            <span class="preloader__round"></span>
+          </div>
+        </div>
+      </div>
       <div class="close-button">
         <img class="close-button__image" src="./img/close-icon.svg" alt="закрыть">
       </div>
@@ -698,14 +708,22 @@
         <form class="modal__form modal__form_callback">
           <div class="modal__input-container">
             <label class="modal__input-label">Ваше имя<span class="modal__input-label-span">*</span></label>
-            <input class="modal__input" type="text" name="name" placeholder="Введите данные" required>
+            <input class="modal__input modal__input-name" type="text" name="name" placeholder="Введите данные">
+            <div class="modal__input-name-valid-icon">
+              <img src="./img/check-green.svg" alt="Валидно">
+            </div>
+            <div class="modal__input-name-no-valid-icon">
+              <img src="./img/no-valid.svg" alt="Не валидно">
+            </div>
           </div>
           <div class="modal__input-container">
             <label class="modal__input-label">Телефон<span class="modal__input-label-span">*</span></label>
-            <input class="modal__input modal__input-phone" type="tel" name="phone" placeholder="+7 495 123-45-90"
-              required>
+            <input class="modal__input modal__input-phone" type="tel" name="phone" placeholder="+7 495 123-45-90">
             <div class="modal__input-phone-valid-icon">
               <img src="./img/check-green.svg" alt="Валидно">
+            </div>
+            <div class="modal__input-phone-no-valid-icon">
+              <img src="./img/no-valid.svg" alt="Не валидно">
             </div>
           </div>
           <button class="modal__submit" type="submit">Заказать обратный звонок</button>
@@ -723,6 +741,13 @@
   </section>
   <section class="order">
     <div class="modal__container">
+      <div class="loader">
+        <div class="preloader">
+          <div class="preloader__container">
+            <span class="preloader__round"></span>
+          </div>
+        </div>
+      </div>
       <div class="close-button">
         <img class="close-button__image" src="./img/close-icon.svg" alt="закрыть">
       </div>
@@ -810,20 +835,22 @@
           <div class="modal__form-inputs-container">
             <div class="modal__input-container">
               <label class="modal__input-label">Ваше имя<span class="modal__input-label-span">*</span></label>
-              <input class="modal__input" type="text" name="name" placeholder="Введите данные" required>
+              <input class="modal__input modal__input-name" type="text" name="name" placeholder="Введите данные">
+              <div class="modal__input-name-valid-icon">
+                <img src="./img/check-green.svg" alt="Валидно">
+              </div>
+              <div class="modal__input-name-no-valid-icon">
+                <img src="./img/no-valid.svg" alt="Не валидно">
+              </div>
             </div>
-            <!--
-            <div class="modal__input-container">
-              <label class="modal__input-label">E-mail<span class="modal__input-label-span">*</span></label>
-              <input class="modal__input" type="email" name="email" placeholder="Введите данные" required>
-            </div>
-            -->
             <div class="modal__input-container">
               <label class="modal__input-label">Телефон<span class="modal__input-label-span">*</span></label>
-              <input class="modal__input modal__input-phone" type="tel" name="phone" placeholder="+7 495 123-45-90"
-                required>
+              <input class="modal__input modal__input-phone" type="tel" name="phone" placeholder="+7 495 123-45-90">
               <div class="modal__input-phone-valid-icon">
                 <img src="./img/check-green.svg" alt="Валидно">
+              </div>
+              <div class="modal__input-phone-no-valid-icon">
+                <img src="./img/no-valid.svg" alt="Не валидно">
               </div>
             </div>
           </div>

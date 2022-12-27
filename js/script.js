@@ -5,11 +5,11 @@ window.addEventListener("DOMContentLoaded", function () {
   function init() {
     var myMap = new ymaps.Map("map", {
         // центр карты = точка
-        center: [55.663586, 37.702784],
+        center: [55.732120, 37.588526],
         zoom: 16,
       }),
       myStreet1 = new ymaps.Placemark(
-        [55.663586, 37.702784], {}, {
+        [55.732120, 37.588526], {}, {
           iconLayout: "default#image",
           iconImageHref: "img/map-icon.svg",
           iconImageSize: [102, 102],
@@ -75,12 +75,10 @@ window.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     if (currentAccordion.classList.contains("options__accordion_active")) {
-      currentAccordion.querySelector(".options__content-container").style.maxHeight = currentAccordion.querySelector(".options__content-container").scrollHeight + 15 + "px";
-      currentAccordion.querySelector(".options__content-container").style.paddingTop = "15px";
+      currentAccordion.querySelector(".options__content-container").style.maxHeight = currentAccordion.querySelector(".options__content-container").scrollHeight + "px";
       currentAccordion.querySelector(".options__content-container").style.overflow = "visible";
     } else {
       currentAccordion.querySelector(".options__content-container").style.maxHeight = 0;
-      currentAccordion.querySelector(".options__content-container").style.paddingTop = 0;
       currentAccordion.querySelector(".options__content-container").style.overflow = "hidden";
     }
   }

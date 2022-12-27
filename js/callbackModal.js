@@ -3,8 +3,12 @@ const callbackContentContainer = callbackModal.querySelector('.modal__content-co
 const callbackSuccessContainer = callbackModal.querySelector('.modal__success-container');
 const modalCallbackForm = callbackModal.querySelector('.modal__form');
 const phoneInputCallbackItem = callbackModal.querySelector('.modal__input-phone');
+const nameInputCallbackItem = callbackModal.querySelector('.modal__input-name');
 const submitCallbackButton = callbackModal.querySelector('.modal__submit');
 const inputCallbackCheckItem = callbackModal.querySelector('.modal__input-phone-valid-icon');
+
+const nameRegex = /^[А-Яа-яa-zA-Z- ]{1,30}$/;
+const regexPhone = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
 
 const openCallbackModal = () => {
   callbackModal.classList.add('callback_active');
@@ -31,14 +35,79 @@ const closeCallbackModal = () => {
 
 function handleCallbackSubmit(e) {
   e.preventDefault();
-  callbackContentContainer.classList.add('modal__content-container_hidden');
-  callbackSuccessContainer.classList.add('modal__success-container_visible');
 
-  const callbackModalInputs = callbackModal.querySelectorAll('.modal__input');
+  // Валиден ли инпут имени
+  if (!nameRegex.test(nameInputCallbackItem.value)) {
+    if (callbackModal.querySelector('.modal__input-name').classList.contains('modal__input_valid')) {
+      callbackModal.querySelector('.modal__input-name').classList.remove('modal__input_valid');
+      callbackModal.querySelector('.modal__input-name-valid-icon').classList.remove('modal__input-name-valid-icon_active');
+    }
 
-  for (let callbackModalItemInput of callbackModalInputs) {
-    callbackModalItemInput.value = "";
+    callbackModal.querySelector('.modal__input-name').classList.add('modal__input_no-valid');
+    callbackModal.querySelector('.modal__input-name-no-valid-icon').classList.add('modal__input-name-no-valid-icon_active');
   };
+
+  // Валиден ли инпут телефона
+  if (!callbackModal.querySelector('.modal__input-phone').classList.contains('modal__input_valid')) {
+    if (callbackModal.querySelector('.modal__input-phone').classList.contains('modal__input_valid')) {
+      callbackModal.querySelector('.modal__input-phone').classList.remove('modal__input_valid');
+      callbackModal.querySelector('.modal__input-phone-valid-icon').classList.remove('modal__input-phone-valid-icon_active');
+    }
+
+    callbackModal.querySelector('.modal__input-phone').classList.add('modal__input_no-valid');
+    callbackModal.querySelector('.modal__input-phone-no-valid-icon').classList.add('modal__input-phone-no-valid-icon_active');
+  };
+
+  if (nameRegex.test(nameInputCallbackItem.value) && callbackModal.querySelector('.modal__input-phone').classList.contains('modal__input_valid')) {
+    callbackModal.querySelector('.loader').classList.add('loader_active');
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', '../ajax.php', true);
+
+    xhr.send(callbackModal.querySelector('.modal__input-phone').value);
+
+    xhr.onload = () => {
+      if (xhr.status >= 400) {
+        console.log(xhr.status);
+        return;
+      };
+
+      ComagicWidget.sitePhoneCall({
+        captcha_key: '',
+        captcha_value: '',
+        phone: callbackModal.querySelector(".modal__input-phone").value,
+        group_id: '343750'
+      }, function (resp) {
+        console.log(resp)
+      });
+
+      callbackModal.querySelector('.loader').classList.remove('loader_active');
+      callbackContentContainer.classList.add('modal__content-container_hidden');
+      callbackSuccessContainer.classList.add('modal__success-container_visible');
+
+      const callbackModalInputs = modalCallbackForm.querySelectorAll('.modal__input');
+
+      for (let callbackModalItemInput of callbackModalInputs) {
+        callbackModalItemInput.value = "";
+      };
+
+      callbackModal.querySelector('.modal__input-phone').classList.remove('modal__input_valid');
+      callbackModal.querySelector('.modal__input-phone-valid-icon').classList.remove('modal__input-phone-valid-icon_active');
+
+      callbackModal.querySelector('.modal__input-name').classList.remove('modal__input_valid');
+      callbackModal.querySelector('.modal__input-name-valid-icon').classList.remove('modal__input-name-valid-icon_active');
+    };
+
+    xhr.onprogress = () => {
+      callbackModal.querySelector('.loader').classList.add('loader_active');
+    };
+
+    xhr.onerror = () => {
+      callbackModal.querySelector('.loader').classList.remove('loader_active');
+      console.log(xhr.response)
+    };
+  }
 };
 
 var phoneInputs = callbackModal.querySelectorAll('.modal__input-phone');
@@ -69,8 +138,6 @@ var onPhoneInput = function (e) {
     selectionStart = input.selectionStart,
     formattedInputValue = "";
 
-  let regexPhone = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
-
   if (!inputNumbersValue) {
     return input.value = "";
   }
@@ -84,38 +151,36 @@ var onPhoneInput = function (e) {
     return;
   }
 
-  if (["7", "8", "9"].indexOf(inputNumbersValue[0]) > -1) {
-    if (inputNumbersValue[0] == "9") inputNumbersValue = "7" + inputNumbersValue;
-    var firstSymbols = (inputNumbersValue[0] == "8") ? "8" : "+7";
-    formattedInputValue = input.value = firstSymbols + " ";
-    if (inputNumbersValue.length > 1) {
-      formattedInputValue += '(' + inputNumbersValue.substring(1, 4);
-    }
-    if (inputNumbersValue.length >= 5) {
-      formattedInputValue += ') ' + inputNumbersValue.substring(4, 7);
-    }
-    if (inputNumbersValue.length >= 8) {
-      formattedInputValue += '-' + inputNumbersValue.substring(7, 9);
-    }
-    if (inputNumbersValue.length >= 10) {
-      formattedInputValue += '-' + inputNumbersValue.substring(9, 11);
-    }
-  } else {
-    formattedInputValue = '+' + inputNumbersValue.substring(0, 16);
+  var firstSymbols = "+7";
+  formattedInputValue = input.value = firstSymbols + " ";
+
+  if (inputNumbersValue.length > 1) {
+    formattedInputValue += '(' + inputNumbersValue.substring(1, 4);
   }
+  if (inputNumbersValue.length >= 5) {
+    formattedInputValue += ') ' + inputNumbersValue.substring(4, 7);
+  }
+  if (inputNumbersValue.length >= 8) {
+    formattedInputValue += '-' + inputNumbersValue.substring(7, 9);
+  }
+  if (inputNumbersValue.length >= 10) {
+    formattedInputValue += '-' + inputNumbersValue.substring(9, 11);
+  }
+
   input.value = formattedInputValue;
 
   if (!regexPhone.test(formattedInputValue)) {
-    submitCallbackButton.disabled = true;
     if (phoneInputCallbackItem.classList.contains('modal__input_valid')) {
       phoneInputCallbackItem.classList.remove('modal__input_valid');
       inputCallbackCheckItem.classList.remove('modal__input-phone-valid-icon_active');
     };
     phoneInputCallbackItem.classList.remove
   } else {
-    submitCallbackButton.disabled = false;
     phoneInputCallbackItem.classList.add('modal__input_valid');
     inputCallbackCheckItem.classList.add('modal__input-phone-valid-icon_active');
+
+    callbackModal.querySelector('.modal__input-phone').classList.remove('modal__input_no-valid');
+    callbackModal.querySelector('.modal__input-phone-no-valid-icon').classList.remove('modal__input-phone-no-valid-icon_active');
   };
 }
 var onPhoneKeyDown = function (e) {
@@ -129,6 +194,24 @@ for (var phoneInput of phoneInputs) {
   phoneInput.addEventListener('keydown', onPhoneKeyDown);
   phoneInput.addEventListener('input', onPhoneInput, false);
   phoneInput.addEventListener('paste', onPhonePaste, false);
-}
+};
+
+phoneInputCallbackItem.addEventListener("click", () => {
+  if (phoneInputCallbackItem.value === "") {
+    phoneInputCallbackItem.value = "+7";
+  }
+});
+
+nameInputCallbackItem.addEventListener('input', (e) => {
+  if (nameRegex.test(e.target.value)) {
+    callbackModal.querySelector('.modal__input-name').classList.add('modal__input_valid');
+    callbackModal.querySelector('.modal__input-name-valid-icon').classList.add('modal__input-name-valid-icon_active');
+  };
+
+  if (callbackModal.querySelector('.modal__input-name').classList.contains('modal__input_no-valid')) {
+    callbackModal.querySelector('.modal__input-name').classList.remove('modal__input_no-valid');
+    callbackModal.querySelector('.modal__input-name-no-valid-icon').classList.remove('modal__input-name-no-valid-icon_active');
+  };
+});
 
 modalCallbackForm.addEventListener("submit", handleCallbackSubmit);
